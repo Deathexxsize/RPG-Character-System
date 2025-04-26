@@ -20,5 +20,6 @@ public class Player {
 
     private String username;
     private String email;
+    private String password;
     private int gold;
 }
