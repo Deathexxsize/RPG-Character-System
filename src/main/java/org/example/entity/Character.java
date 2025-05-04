@@ -19,6 +19,7 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(length = 32)
     private String name;
     private int level;
     private int health;
@@ -28,7 +29,8 @@ public class Character {
     @Enumerated(EnumType.STRING)
     private CharacterType characterType;
 
-    // private Player player;
+    @OneToOne(mappedBy = "character")
+    private Player player;
 
     public Character(CharacterType characterType) {
         this.characterType = characterType;

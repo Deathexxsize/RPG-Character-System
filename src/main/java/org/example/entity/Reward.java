@@ -6,14 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.enums.ItemTypes.ItemType;
 
-import java.util.LinkedList;
-import java.util.List;
-
 @Entity
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class InventoryItem {
+@AllArgsConstructor
+@Data
+public class Reward {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +19,10 @@ public class InventoryItem {
     @Enumerated(EnumType.STRING)
     private ItemType itemType;
 
+    @Column(nullable = false)
+    private int amount;
+
     @ManyToOne
-    @JoinColumn(name = "player_id")
-    private Player player;
+    @JoinColumn(name = "quest_id")
+    private Quest quest;
 }

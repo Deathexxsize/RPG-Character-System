@@ -16,8 +16,10 @@
         <mapping class="org.example.entity.Character"/>
         <mapping class="org.example.entity.InventoryItem"/>
         <mapping class="org.example.entity.Player"/>
+        <mapping class="org.example.entity.PlayerItem"/>
         <mapping class="org.example.entity.Quest"/>
-        <mapping class="org.example.entity.ShopItem"/>
+        <mapping class="org.example.entity.Reward"/>
+        <mapping class="org.example.entity.Shop"/>
 
     </session-factory>
 </hibernate-configuration>

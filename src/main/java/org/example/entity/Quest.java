@@ -1,12 +1,12 @@
 package org.example.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,10 +18,18 @@ public class Quest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false, length = 32)
     private String title;
+    @Column(nullable = false, length = 512)
     private String description;
+
     private Integer rewardGold;
 
-    // private InventoryItem inventoryItem;
+    private Integer rewardExp;
 
+    @OneToMany(mappedBy = "quest", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reward> reward = new ArrayList<>();
+
+    @OneToOne(mappedBy = "quest")
+    private Player player;
 }
